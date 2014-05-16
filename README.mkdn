@@ -1,0 +1,13 @@
+ぺんぎんさんと学ぶコンピュテーション式入門
+==========================================
+
+ぺんぎんさんこと[@pocketberseker](http://twitter.com/pocketberserker)氏によるF#のコンピュテーション式解説です。
+
+## ビルド方法
+
+    review-compile --target html intro.re
+
+## 参考資料
+
+ * https://github.com/TechBooster/FirstStepReVIEW
+
