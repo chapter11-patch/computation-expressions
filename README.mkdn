@@ -3,11 +3,19 @@
 
 ぺんぎんさんこと[@pocketberseker](http://twitter.com/pocketberserker)氏によるF#のコンピュテーション式解説です。
 
+## 事前準備
+
+ * Re:VIEW
+ * pLatex
+
 ## ビルド方法
 
-    review-compile --target html intro.re
+PDFの生成
 
-## 参考資料
+    rake pdf
 
- * https://github.com/TechBooster/FirstStepReVIEW
+個別の章のHTML生成
+
+    rake html re=intro.re
+
 
