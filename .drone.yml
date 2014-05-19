@@ -1,0 +1,10 @@
+image: vvakame/review
+script:
+  - ruby --version
+  - gem list
+  - rake clean pdf
+deploy:
+  ssh:
+    target: mzp@codefirst.org:/opt/nginx/html/mzp/ch11-patch/latest
+    artifacts:
+      - book.pdf
