@@ -4,10 +4,10 @@ bookname: book
 booktitle: ぺんぎんさんと学ぶコンピュテーション式入門(仮)
 # 著者
 aut: pocketberserker
-prt: mzp
+prt: bleis, mzp
 prt_url:  http://codefirst.org/
-edt: mzp
-dsr: mzp
+edt: bleis, mzp
+dsr: bleis, mzp
 date: 2014-5-16
 rights: |
   (C) 2014 codefirst.org
@@ -22,7 +22,7 @@ urnid: http://codefirst.org/book/ch11-patch
 # CSSファイル (yamlファイルおよびReVIEWファイルを置いたディレクトリにあること
 #stylesheet: main.css
 # LaTeX用のdocumentclassを指定する
-texstyle: tatsumacro
+#texstyle: tatsumacro
 texdocumentclass: ["jsbook", "oneside,14pt"]
 # 目次として抽出するレベル
 toclevel: 2
