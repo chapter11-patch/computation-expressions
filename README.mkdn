@@ -18,4 +18,7 @@ PDFの生成
 
     rake html re=intro.re
 
+## CI環境について
 
+ * ビルド状況: http://chapter11-patch.cloudapp.net/github.com/chapter11-patch/books/
+ * 最新版: http://codefirst.org/mzp/ch11-patch/latest/book.pdf
