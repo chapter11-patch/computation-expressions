@@ -22,7 +22,7 @@ urnid: http://codefirst.org/book/ch11-patch
 # CSSファイル (yamlファイルおよびReVIEWファイルを置いたディレクトリにあること
 #stylesheet: main.css
 # LaTeX用のdocumentclassを指定する
-#texstyle: tatsumacro
+texstyle: tatsumacro
 texdocumentclass: ["jsbook", "oneside,14pt"]
 # 目次として抽出するレベル
 toclevel: 2
