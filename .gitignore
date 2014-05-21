@@ -1,3 +1,4 @@
 *.html
-book-pdf
+book-pdf/
+book-print-pdf/
 *.pdf

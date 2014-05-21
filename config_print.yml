@@ -1,0 +1,41 @@
+# ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
+bookname: book-print
+# 書名
+booktitle: ぺんぎんさんと学ぶコンピュテーション式入門(仮)
+# 著者
+aut: pocketberserker
+prt: bleis, mzp
+prt_url:  http://codefirst.org/
+edt: bleis, mzp
+dsr: bleis, mzp
+date: 2014-5-16
+rights: |
+  (C) 2014 codefirst.org
+description: コンピュテーション式入門
+
+# coverfile: カバーページのbody要素内に挿入する内容を記述したファイル名
+# coverfile: _cover.html
+# coverimage: 表紙用画像ファイル
+# coverimage: cover.jpg
+# 固有IDに使用するドメイン
+urnid: http://codefirst.org/book/ch11-patch
+# CSSファイル (yamlファイルおよびReVIEWファイルを置いたディレクトリにあること
+#stylesheet: main.css
+# LaTeX用のdocumentclassを指定する
+#
+colophon: true
+texstyle: techbooster-doujin
+texdocumentclass: ["jsbook", "b5j,twoside,openany"]
+# 目次として抽出するレベル
+toclevel: 2
+# セクション番号を表示するレベル
+secnolevel: 2
+# review-compileに渡すパラメータ
+# params: --stylesheet=main.css
+# 目次生成用？
+mytoc: true
+# 奥付生成用
+colophon: true
+pubhistory: |
+  2014年8月31日  初版発行したい v1.0.0
+debug: true
