@@ -136,19 +136,19 @@ let 識別子 1つ以上のパラメータ : 戻り値型 = 式
 実際に関数を定義してみましょう。
 
 //emlist{
-let sampleFunction x : bool = x < 2
+let add x y : int = x + y
 //}
 
 戻り値型を省略すると、次の形になります。
 
 //emlist{
-let sampoleFunction x = x < 2
+let add x y = x + y
 //}
 
 パラメータにも型を指定することができます。
 
 //emlist{
-let addFloatValue (x : float) (y : float) = x + y
+let add (x : int) (y : int) = x + y
 //}
 
 パラメータの型は、型推論可能なパターンと型を明示する必要があるパターンが存在します。
