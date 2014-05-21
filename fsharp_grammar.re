@@ -146,7 +146,7 @@ let add x y : int = x + y
 let add x y = x + y
 //}
 
-パラメータにも型を指定することができます。
+パラメータにも型を指定できます。
 
 //emlist{
 let add (x : int) (y : int) = x + y
