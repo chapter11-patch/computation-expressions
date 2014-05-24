@@ -1,9 +1,7 @@
-intro.re
-how_to_install.re
+fsharp_grammar.re
 monad_overview.re
 monad_maybe.re
 monad_list.re
 monad_state.re
 monad_async.re
 conclusion.re
-other_lang_monad.re

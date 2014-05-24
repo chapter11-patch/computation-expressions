@@ -5,6 +5,8 @@ script:
   - rake clean pdf
 deploy:
   ssh:
-    target: mzp@codefirst.org:/opt/nginx/html/mzp/ch11-patch/latest
+    target: mzp@codefirst.org:/opt/nginx/html/mzp/ch11-patch/latest/
     artifacts:
       - book.pdf
+      - book-print.pdf
+    cmd: tar xv -C /opt/nginx/html/mzp/ch11-patch/latest -f /opt/nginx/html/mzp/ch11-patch/latest/books.tar.gz

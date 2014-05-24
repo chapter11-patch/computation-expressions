@@ -1,5 +1,5 @@
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
-bookname: book
+bookname: book-print
 # 書名
 booktitle: ぺんぎんさんと学ぶコンピュテーション式入門(仮)
 # 著者
@@ -22,8 +22,10 @@ urnid: http://codefirst.org/book/ch11-patch
 # CSSファイル (yamlファイルおよびReVIEWファイルを置いたディレクトリにあること
 #stylesheet: main.css
 # LaTeX用のdocumentclassを指定する
-texstyle: tatsumacro
-texdocumentclass: ["jsbook", "oneside,14pt"]
+#
+colophon: true
+texstyle: techbooster-doujin
+texdocumentclass: ["jsbook", "b5j,twoside,openany"]
 # 目次として抽出するレベル
 toclevel: 2
 # セクション番号を表示するレベル
