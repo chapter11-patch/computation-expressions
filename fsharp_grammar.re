@@ -248,7 +248,7 @@ let twice x = { x with Numerator = x.Numerator * 2 }
 型パラメータは、カンマ区切りで複数記述できます。
 
 //emlist{
-type Pair<'T, 'U> { Key : 'T; Value : 'U }
+type Pair<'T, 'U> = { Key : 'T; Value : 'U }
 //}
 
 == タプル
