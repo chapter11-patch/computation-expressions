@@ -344,7 +344,7 @@ type 型名 =
 次のコードは、判別共用体を用いて順序付けを表したものです。
 
 //emlist{
-type 型名 =
+type Order =
   | LessThan
   | EqualTo
   | GreaterThan
@@ -381,7 +381,7 @@ type 型名 =
 フィールドを持つ例として、 特定の図形を表す Shape 型を定義してみましょう。
 
 //emlist{
-type 型名 =
+type Shape =
   | Circle of float
   | Rectangle of float * float
 //}
@@ -390,7 +390,7 @@ F# 3.1 からは、各フィールドに名前をつけられるようになり�
 フィールド名をつける場合には、コロンを用います。
 
 //emlist{
-type 型名 =
+type Shape =
   | Circle of radius : float
   | Rectangle of width : float * length float
 //}
