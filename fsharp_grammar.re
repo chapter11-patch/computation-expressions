@@ -202,23 +202,23 @@ let (/=) x y = x <> y
 例として、第一要素にアイテム名、第二要素に個数を持つタプルを作ってみましょう。
 
 //emlist{
-let itemCount = ("item", 2)
+let item = ("item", 2)
 //}
 
 要素数が n （ n は 2 以上の整数）のタプルは、n タプルと呼ばれます。
-itemCount は要素数が 2 なので、2 タプルです。
+item は要素数が 2 なので、2 タプルです。
 
 タプルの型を明示したい場合は、アスタリスクを使用します。
 
 //emlist{
-let itemCount : string * int = ("item", 2)
+let item : string * int = ("item", 2)
 //}
 
 二要素タプルの場合は、標準で提供されている fst 、 snd 関数でそれぞれ第一要素、第二要素を取得できます。
 
 //emlist{
-fst itemCount // equal "item"
-snd itemCount // equal 2
+fst item // equal "item"
+snd item // equal 2
 //}
 
 == 判別共用
