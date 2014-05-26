@@ -383,7 +383,7 @@ type 型名 =
 //emlist{
 type 型名 =
   | Circle of float
-  | Rectagle of float * float
+  | Rectangle of float * float
 //}
 
 F# 3.1 からは、各フィールドに名前をつけられるようになりました。
@@ -392,7 +392,7 @@ F# 3.1 からは、各フィールドに名前をつけられるようになり�
 //emlist{
 type 型名 =
   | Circle of radius : float
-  | Rectagle of width : float * length float
+  | Rectangle of width : float * length float
 //}
 
 判別共用体の定義は一行にまとめて記述できます。
