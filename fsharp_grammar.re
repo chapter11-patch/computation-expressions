@@ -356,7 +356,14 @@ type Order =
 type Order = | LessThan | EqualTo | GreaterThan
 //}
 
+また、先頭のパーティカルバーは省略可能です。
+
+//emlist{
+type Order = LessThan | EqualTo | GreaterThan
+//}
+
 本書では、一行で記述するか複数行にわけて記述するかは、型定義の見易さに応じて使い分けることにします。
+先頭のパーティカルバーの省略は、判別共用体を一行で記述する時のみ使用します。
 
 ケース識別子を指定することで、判別共用体の値を返すことができます。
 
