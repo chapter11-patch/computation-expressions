@@ -260,7 +260,7 @@ let twice x = { x with Numerator = x.Numerator * 2 }
 ジェネリック型@<fn>{generics}のレコードを定義したい場合は、型名の後ろの山括弧の中に型パラメータを記述します。
 型パラメータは、カンマ区切りで複数記述できます。
 
-//footnote[generics][他の言語では、多相型やジェネリクスと呼ばれることもあります。]
+//footnote[generics][他の言語では、多相型や総称型と呼ばれることもあります。]
 
 //emlist{
 type Pair<'T, 'U> = { Key : 'T; Value : 'U }
