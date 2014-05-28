@@ -407,14 +407,14 @@ F# 3.1 からは、各フィールドに名前をつけられるようになり�
 //emlist{
 type Shape =
   | Circle of radius : float
-  | Rectangle of width : float * length float
+  | Rectangle of width : float * length : float
 //}
 
 実際に円や長方形を生成してみましょう。
 
 //emlist{
-Circle 2 // 半径2の円
-Rectangle (3, 4) // 幅3、長さ4の長方形
+Circle 2.0 // 半径2の円
+Rectangle (3.0, 4.0) // 幅3、長さ4の長方形
 //}
 
 ケース識別子によって計算を分岐する方法や、フィールドの値を取り出す方法については、パターンマッチで説明します。
