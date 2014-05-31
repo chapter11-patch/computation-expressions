@@ -41,9 +41,9 @@ return : 'T -> M<'T>
 //emlist{
 // f1, f2... は何らかの計算
 f1 x0 >>= fun x1 ->
-f2 n1 >>= fun x2 ->
+f2 x1 >>= fun x2 ->
 ...
-fn xn1 >>= fun xn -> return (g xn)
+fn xm >>= fun xn -> return (g xn)
 //}
 
 この記述は、 return と bind を持つ任意の文脈に適用できます。
