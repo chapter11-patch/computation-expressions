@@ -6,7 +6,7 @@ script:
   - rake clean pdf
 deploy:
   ssh:
-    target: mzp@codefirst.org:/opt/nginx/html/mzp/ch11-patch/${CI_BRANCH}.tar
+    target: mzp@codefirst.org:/tmp/ch11-book.tar
     artifacts:
       - book.pdf
       - book-print.pdf
