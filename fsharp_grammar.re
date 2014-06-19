@@ -355,7 +355,7 @@ let twice x = { x with Numerator = x.Numerator * 2 }
 タプルは、丸括弧とカンマを使って表現します。
 
 //emlist{
-(element1, elemnt2, ...)
+(要素1, 要素2, ...)
 //}
 
 各要素の型は異なる場合もあります。
