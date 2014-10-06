@@ -125,7 +125,7 @@ F# では、コンピュテーション式でこれを実現します。
 // コンピュテーション式用のビルダークラス
 type MaybeBuilder () =
   member this.Return(x) = Just x
-  member this.ReturnFrom(x: Maube<_>) = x
+  member this.ReturnFrom(x: Maybe<_>) = x
   member this.Bind(x, f) = x >>= f
 
 // ビルダーインスタンス
