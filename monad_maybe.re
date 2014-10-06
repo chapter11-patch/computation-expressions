@@ -102,7 +102,7 @@ let (>>=) x f =
   match x with
   | Just v -> f v
   | Nothing -> Nothing
-//
+//}
 
 @<code>{>>=} 演算子を用いて、 @<code>{sum} 関数を書き換えてみましょう。
 
