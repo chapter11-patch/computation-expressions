@@ -1,5 +1,6 @@
-ぺんぎんさんと学ぶコンピュテーション式入門
-==========================================
+# ぺんぎんさんと学ぶコンピュテーション式入門
+
+[![CircleCI](https://circleci.com/gh/chapter11-patch/books/tree/master.svg?style=svg)](https://circleci.com/gh/chapter11-patch/books/tree/master)
 
 ぺんぎんさんこと[@pocketberseker](http://twitter.com/pocketberserker)氏によるF#のコンピュテーション式解説です。
 
@@ -18,7 +19,3 @@ PDFの生成
 
     rake html re=intro.re
 
-## CI環境について
-
- * [ビルド状況](http://chapter11-patch.cloudapp.net/github.com/chapter11-patch/books/)
- * [各ブランチの最新版PDF](http://codefirst.org/mzp/ch11-patch/)
