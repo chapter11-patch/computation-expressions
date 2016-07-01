@@ -25,7 +25,7 @@ urnid: http://codefirst.org/book/ch11-patch
 #
 colophon: true
 texstyle: techbooster-doujin
-texdocumentclass: ["jsbook", "b5j,twoside,openany"]
+texdocumentclass: ["jsbook", "uplatex,b5j,twoside,openany"]
 # 目次として抽出するレベル
 toclevel: 2
 # セクション番号を表示するレベル

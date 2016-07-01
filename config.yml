@@ -23,7 +23,7 @@ urnid: http://codefirst.org/book/ch11-patch
 #stylesheet: main.css
 # LaTeX用のdocumentclassを指定する
 texstyle: tatsumacro
-texdocumentclass: ["jsbook", "oneside,14pt"]
+texdocumentclass: ["jsbook", "uplatex,oneside,14pt"]
 # 目次として抽出するレベル
 toclevel: 2
 # セクション番号を表示するレベル
