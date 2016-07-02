@@ -11,7 +11,8 @@ dependencies:
     - mkdir -p ~/docker; docker save vvakame/review > ~/docker/image.tar
 test:
   override:
-    - docker run -v $(pwd):/work vvakame/review:latest /bin/sh -c "cd /work && rake clean pdf"
+    - docker run -v $(pwd):/work vvakame/review:latest /bin/sh -c "cd /work && npm install && rake clean lint pdf"
+  post:
     - docker cp `docker ps -l -q`:/work/book.pdf $CIRCLE_ARTIFACTS
     - docker cp `docker ps -l -q`:/work/book-print.pdf $CIRCLE_ARTIFACTS
 general:

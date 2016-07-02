@@ -1,0 +1,20 @@
+{
+  "plugins": [
+    "review"
+  ],
+  "rules" : {
+    "prh": {
+      "rulePaths": [
+        "prh.yml"
+      ]
+    },
+    "preset-japanese": {
+      "max-ten": {
+        "max": 5
+      },
+      "sentence-length": {
+        "max": 200
+      },
+    }
+  }
+}

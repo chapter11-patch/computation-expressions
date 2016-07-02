@@ -1,0 +1,22 @@
+{
+  "name": "chapter11-patch",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "textlint": "^7.0.1",
+    "textlint-plugin-review": "^0.3.3",
+    "textlint-rule-preset-japanese": "^1.3.2",
+    "textlint-rule-prh": "^3.1.1"
+  },
+  "scripts": {
+    "test": "rake lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chapter11-patch/books.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chapter11-patch/books/issues"
+  },
+  "homepage": "https://github.com/chapter11-patch/books#readme"
+}
