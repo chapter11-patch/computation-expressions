@@ -3,6 +3,11 @@
     "review"
   ],
   "rules" : {
+    "prh": {
+      "rulePaths": [
+        "prh.yml"
+      ]
+    },
     "preset-japanese": {
       "sentence-length": {
         "max": 200
