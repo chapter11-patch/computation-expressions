@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    "review"
+  ],
+  "rules" : {
+    "preset-japanese": {
+      "sentence-length": {
+        "max": 200
+      },
+    }
+  }
+}

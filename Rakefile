@@ -41,10 +41,10 @@ end
   end
 }
 
-task :default => :pdf
+task :default => [:lint, :pdf]
 
 desc 'generate PDF and EPUB file'
-task :all => [:pdf, :epub]
+task :all => [:lint, :pdf, :epub]
 
 desc 'generate PDF file'
 task :pdf => ["book.pdf", "book-print.pdf"]
@@ -54,6 +54,12 @@ task :epub => "book.epub"
 
 SRC = FileList['*.re'] + ["config.yml"]
 PRINT_SRC = FileList['*.re'] + ['config_print.yml']
+
+task :lint do
+  for re in SRC do
+    sh "./node_modules/.bin/textlint #{re}"
+  end
+end
 
 file "book.pdf" => SRC do
   sh "rm -f book.pdf"
