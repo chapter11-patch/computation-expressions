@@ -1,4 +1,4 @@
-= 第一歩: Maybeモナド
+= モナドの例: Option
 
 //lead{
 "I call it my billion-dollar mistake. It was the invention of the null reference in 1965." Charles Antony Richard Hoare

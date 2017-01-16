@@ -1,8 +1,8 @@
-# ぺんぎんさんと学ぶコンピュテーション式入門
+# ことりちゃんと学ぶコンピュテーション式入門
 
 [![CircleCI](https://circleci.com/gh/chapter11-patch/books/tree/master.svg?style=svg)](https://circleci.com/gh/chapter11-patch/books/tree/master)
 
-ぺんぎんさんこと[@pocketberseker](http://twitter.com/pocketberserker)氏によるF#のコンピュテーション式解説です。
+F#のコンピュテーション式について解説する資料です。
 
 ## 事前準備
 

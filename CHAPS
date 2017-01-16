@@ -1,7 +1,9 @@
-fsharp_grammar.re
-monad_maybe.re
-monad_list.re
-monad_state.re
-monad_async.re
-monad_overview.re
+monad_option.re
+async_comp_expr.re
+monoid_list.re
+monad_plus.re
+comp_expr_conv_rules.re
+hack_comp_expr.re
+implicit_conversion.re
+analysis_comp_expr.re
 future_work.re

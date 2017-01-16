@@ -1,16 +1,16 @@
 # ブック名(ファイル名になるもの。ASCII範囲の文字を使用)
 bookname: book-print
 # 書名
-booktitle: ぺんぎんさんと学ぶコンピュテーション式入門(仮)
+booktitle: ことりちゃんと学ぶコンピュテーション式入門(仮)
 # 著者
 aut: pocketberserker
 prt: bleis, mzp
-prt_url:  http://codefirst.org/
+prt_url:  https://github.com/chapter11-patch/
 edt: bleis, mzp
 dsr: bleis, mzp
-date: 2014-5-16
+date: 2017-4-9
 rights: |
-  (C) 2014 codefirst.org
+  (C) 2017 >>=愛好会
 description: コンピュテーション式入門
 
 # coverfile: カバーページのbody要素内に挿入する内容を記述したファイル名
@@ -18,7 +18,7 @@ description: コンピュテーション式入門
 # coverimage: 表紙用画像ファイル
 # coverimage: cover.jpg
 # 固有IDに使用するドメイン
-urnid: http://codefirst.org/book/ch11-patch
+urnid: https://github.com/chapter11-patch/computation-expressions
 # CSSファイル (yamlファイルおよびReVIEWファイルを置いたディレクトリにあること
 #stylesheet: main.css
 # LaTeX用のdocumentclassを指定する
@@ -37,5 +37,5 @@ mytoc: true
 # 奥付生成用
 colophon: true
 pubhistory: |
-  2014年10月25日  プレビュー版発行したい v0.1.0
+  2017年4月9日  発行したい v0.1.0
 debug: true
