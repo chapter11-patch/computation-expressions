@@ -1,6 +1,6 @@
 # ことりちゃんと学ぶコンピュテーション式入門
 
-[![CircleCI](https://circleci.com/gh/chapter11-patch/books/tree/master.svg?style=svg)](https://circleci.com/gh/chapter11-patch/books/tree/master)
+[![CircleCI](https://circleci.com/gh/chapter11-patch/computation-expressions/tree/master.svg?style=svg)](https://circleci.com/gh/chapter11-patch/computation-expressions/tree/master)
 
 F#のコンピュテーション式について解説する資料です。
 
