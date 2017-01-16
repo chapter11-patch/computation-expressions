@@ -4,3 +4,4 @@ book-print-pdf/
 *.pdf
 .tex-mf-var/
 node_modules/
+npm-debug.log
