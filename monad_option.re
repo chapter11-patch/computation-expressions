@@ -1,4 +1,4 @@
-= モナドの例: Option
+= 最初の例: Option
 
 //lead{
 "I call it my billion-dollar mistake. It was the invention of the null reference in 1965." Charles Antony Richard Hoare
@@ -18,127 +18,122 @@
 ネストはともかく、他の二項目に関しては切実な問題なので、これらの問題の解決策としてよく知られている方法を見ていきましょう。
 null 対する解決方法はいくつか存在します。
 
- 1. Null Object パターン
- 2. Safe Navigation Operator（Groovy）、Null-propagating operator（C# 6.0）
+ 1. Null Objectパターン
+ 2. Safe Navigation Operator（Groovy）、Null-conditional Operator（C# 6.0）
  3. 型による表現
 
-Null Object パターンは、null の代わりに 値を持たない、処理が空のオブジェクトを使用するパターンです。
+Null Objectパターンは、``null``の代わりに 値を持たない、処理が空のオブジェクトを使用するパターンです。
 ただし、Null Object の実装次第では挙動が変わってしまうこともあるため、完全な代替とは言い切れません。
 また、機械的な強制力はないため、初期化時の代入を忘れる可能性があります。
 
-Safe Navigation Operator や Null-propagating operator は、左辺が null だった場合は null を返し、それ以外の場合は メソッドを呼び出す演算子です。
+Safe Navigation OperatorやNull-conditional Operatorは、左辺が``null``だった場合は``null``を返し、それ以外の場合は メソッドを呼び出す演算子です。
 既存のコードをほとんど書き換えることなく利用できるので、便利なことは確かです。
-しかし、 Null Object と同様に強制力はないため、うっかりミスは防げません。
-また、この演算子が返す null がメソッドの戻り値として返される可能性は、0ではありません。
+しかし、Null Objectと同様に強制力はないため、うっかりミスは防げません。
+また、この演算子の戻り値``null``がメソッドの戻り値として返される可能性は、0ではありません。
 
-型による表現では、判別共用体（もしくはそれと同等の機能）によって "値をもたない状態" と "何かデータをもつ状態" を表します。
+型による表現では、判別共用体（もしくはそれと同等の機能）によって”値をもたない状態”と”何かデータをもつ状態”を表します。
 これにより、 値が存在しない可能性を型によって伝搬させることができ、この型を返す関数を利用するユーザーに対して何かしらの処理を行うことを強制できます。
-なお、.NET Framework の Nullable も null を表現する型ですが、 Nullable は構造体のみを対象としています。
+なお、.NET FrameworkのNullable型も``null``を表現する型ですが、Nullableは構造体のみを対象としています。
 対して、判別共用体による表現では任意の型を対象にできます。
 
-== 値が存在しない可能性を型で表す
+== 値が存在しないかもしれない型
 
-それでは、値が存在するかもしれないことを型で表してみましょう。
+F#では、値が存在するかもしれない値を@<code>{Option}型で表現します。
+Option型は標準で提供されており、およそ次のような定義です@<fn>{definition}。
+
+//footnote[definition][公式実装では.NET Frameworkとの相互運用の関係でいくつかのAttributeも定義されているのですが、本資料では不要な情報なので割愛します。]
 
 //emlist{
-type Maybe<'T> = Just of 'T | Nothing
+type Option<'T> = Some of 'T | None
 //}
 
-@<code>{Maybe} 型は、任意の値 をもつ @<code>{Just} と、値を持たない @<code>{Nothing} という2つのケース識別子から成ります。
+@<code>{Option}型は、任意の値 をもつ@<code>{Some}と、値を持たない@<code>{None}という2つのケース識別子から成ります。
+
+ここで、@<code>{db}から指定したキーに対応する値を取得する操作について考えてみましょう。
 
 //emlist{
 let db = [ ("x", 1); ("y", 2); ("z", 3) ]
 //}
 
-ここで、 @<code>{db} から指定したキーに対応する値を取得する操作について考えてみましょう。
-指定したキーが @<code>{db} に登録されていないときは、返す値がありません。
-そこで、 @<code>{Maybe} 型の出番です。
+指定したキーが@<code>{db}に登録されていないときは、返す値がありません。
+そこで、@<code>{Option}型の出番です。
 
 //emlist{
 let rec tryFind key db =
   match db with
-  | [] -> Nothing
-  | (k, v) :: xs when k = key -> Just v
+  | [] -> None
+  | (k, v) :: xs when k = key -> Some v
   | _ :: xs -> tryFind key xs
 //}
 
-指定したキーに一致する値が見つからない際に @<code>{Nothing} を返すことで、値が存在しないことを伝えられるようになりました。
+指定したキーに一致する値が見つからない際に@<code>{None}を返すことで、値が存在しないことを伝えられるようになりました。
 
 //emlist{
-tryFind "y" db // equal (Just 2)
-tryFind "w" db // equal Nothing
+tryFind "y" db // equal (Some 2)
+tryFind "w" db // equal None
 //}
 
-@<code>{db} からふたつの値を取得してその合計を返す関数を定義してみましょう。
+@<code>{db}からふたつの値を取得してその合計を返す関数を定義してみましょう。
 
 //emlist{
 let sum a b db =
   match tryFind a db with
-  | Just x ->
+  | Some x ->
     match tryFind b db with
-    | Just y -> Just (x + y)
-    | Nothing -> Nothing
+    | Some y -> Some (x + y)
+    | None -> Nothing
   | Nothing -> Nothing
 
-sum "x" "z" db // equal (Just 4)
-sum "x" "w" db // equal Nothing
-sum "v" "y" db // equal Nothing
+sum "x" "z" db // equal (Some 4)
+sum "x" "w" db // equal None
+sum "v" "y" db // equal None
 //}
 
 パターンマッチを使うことで、安全に値を取得して計算できるようになりました。
 
 しかし、不満な点もあります。
-パターンマッチがネストしてしまう点と、 @<code>{Nothing} にマッチした際 @<code>{Nothing} を返す、という定型的なコードが増えてしまう点です。
+パターンマッチがネストしてしまう点と、@<code>{None}にマッチした際@<code>{None}を返す、という定型的なコードが増えてしまう点です。
 
 == 理想1: 定型的なコードを減らす
 
-定型的なコードは、関数として解決できそうです。
-ここで共通する操作は、 @<code>{Just} なら何かしらの計算を適用して @<code>{Maybe} 型を返し、 @<code>{Nothing} ならば @<code>{Nothing} を返す部分です。
-今回は、演算子として抽出します。
-
-//emlist{
-// Maybe<'T> -> ('T -> Maybe<'U>) -> Maybe<'U>)
-let (>>=) x f =
-  match x with
-  | Just v -> f v
-  | Nothing -> Nothing
-//}
-
-@<code>{>>=} 演算子を用いて、 @<code>{sum} 関数を書き換えてみましょう。
+ここで共通する操作は、@<code>{Some}なら何かしらの計算を適用して @<code>{Option}型を返し、@<code>{None} ならば @<code>{None} を返す部分です。
+幸いなことに、このような定型コードはF#標準の@<code>{Option.bind}関数を使うことで無くすことができます。
 
 //emlist{
 let sum a b db =
-  tryFind a db >>= fun x ->
-  tryFind b db >>= fun y ->
-  Just (x + y)
+  tryFind a db
+  |> Option.bind (fun x ->
+    tryFind b db
+    |> Option.bind (fun y ->
+      Some (x + y)
+    )
+  )
 //}
-
-不満点が解消されました。
 
 == 理想2: 手続き的な書式で記述する
 
-本章の序盤で "ネストはともかく" などと書いてしまいましたが、ネストを少なくしたほうが可読性の向上に繋がるのは確かです。
-さらに欲をいえば、 @<code>{let} と同等のキーワードを利用して束縛を表現できれば、もっとわかりやすくなることでしょう。
-F# では、コンピュテーション式でこれを実現します。
+本章の序盤で”ネストはともかく”などと書いてしまいましたが、ネストを少なくしたほうが可読性の向上に繋がるのは確かです。
+欲をいえば、@<code>{let}と同等のキーワードを利用して束縛を表現できればもっとわかりやすくなることでしょう。
+F#では、コンピュテーション式でこれを実現します。
 
 //emlist{
 // コンピュテーション式用のビルダークラス
-type MaybeBuilder () =
-  member this.Return(x) = Just x
-  member this.ReturnFrom(x: Maybe<_>) = x
-  member this.Bind(x, f) = x >>= f
+type OptionBuilder () =
+  member this.Return(x) = Some x
+  member this.ReturnFrom(x: Option<_>) = x
+  member this.Bind(x, f) = Option.bind f x
 
 // ビルダーインスタンス
-let maybe = MaybeBuilder()
+let option = OptionBuilder()
 //}
 
-@<code>{>>=} に対応する @<code>{Bind} メソッドによって @<code>{let!} 、値を @<code>{Just} で包んで返す @<code>{Return} メソッドによって @<code>{return} 、 @<code>{Maybe} 型の値をそのまま返す @<code>{ReturnFrom} メソッドによって @<code>{return!} キーワードがコンピュテーション式内で利用可能になります。
+@<code>{Option.bind}に対応する@<code>{Bind}メソッドによって@<code>{let!}、値を@<code>{Some}で包んで返す@<code>{Return} メソッドによって@<code>{return}、@<code>{Option}型の値をそのまま返す@<code>{ReturnFrom}メソッドによって@<code>{return!}キーワードがコンピュテーション式内で利用可能になります。
 
-準備が整ったので、 @<code>{sum} 関数を書き換えてみましょう。
+準備が整ったので、再び@<code>{sum}関数を書き換えてみましょう。
 
 //emlist{
 let sum a b db =
-  maybe {
+  option {
     let! x = tryFind a db
     let! y = tryFind b db
     return x + y
@@ -147,106 +142,53 @@ let sum a b db =
 
 コンピュテーション式の導入によって、ネストを平坦化することができました。
 
-== 標準にあります
+== モナドとコンピュテーション式
 
-ここまで、 @<code>{Maybe} 型を独自に定義して Maybe モナドについて説明してきました。
-しかし、この型を毎回定義するのは面倒くさいですね。
+@<code>{Bind}や@<code>{Return}といったメソッド名を見てピンときた方もいらっしゃることでしょう。
+コンピュテーション式は、モナド則を満たす型の計算を手続き的な記述へと置き換える際にとても都合のよい仕組みなのです。
 
-幸いなことに、 F# には @<code>{Maybe} 型と全く同じ動作をする @<code>{Option} 型が標準搭載されています。
-@<code>{>>=} 演算子についても、 @<code>{bind} という関数名で定義されています。
-
-というわけで、独自定義していた関数を組み込み関数で置き換えましょう。
+作成したコンピュテーション式がモナド則を満たすことを確認してみましょう。
+コンピュテーション式を使わなかった場合のコードは次のとおりです。
 
 //emlist{
-let tryFind key db =
-  List.tryFind (fst >> ((=) key)) db
-  |> Option.map snd
+let point a = Some a
 
-let (>>=) x f = Option.bind f x
+let rightIdentityLaw a =
+  Option.bind point a = a
 
-type OptionBuilder() =
-  member this.Return(x) = Some x
-  member this.ReturnFrom(x) = x
-  member this.Bind(x, f) = x >>= f
+let leftIdentityLaw f a =
+  Option.bind f (point a) = f a
 
-let option = OptionBuilder()
+let associativeLaw f g fa =
+  Option.bind g (Option.bind f fa)
+    = Option.bind (fun a -> Option.bind g (f a)) fa
+//}
 
-let sum a b db =
-  option {
-    let! x = tryFind a db
-    let! y = tryFind b db
-    return x + y
+@<code>{point}は任意の値を@<code>{Option}型に持ち上げるための補助関数です。
+
+左辺をコンピュテーション式を用いた実装に変更してみましょう。
+
+//emlist{
+let rightIdentityLaw a =
+  let left = option {
+    let! fa = a
+    return! point fa
   }
+  left = a
 
-sum "x" "z" db // equal (Some 4)
-sum "x" "w" db // equal None
-sum "v" "y" db // equal None
-//}
-
-== 例題: ピエールの綱渡り
-
-例題として、"すごい Haskell 楽しく学ぼう"に登場する例題"ピエールの綱渡り"を実装していきましょう。
-
- 1. ピエールがもつバランス棒の左右には鳥がとまることがある
- 2. バランス棒の左右にとまっている鳥の差が 3 以下ならば、ピエールはバランスがとれる
- 3. 差が 4 以上ならば、ピエールは安全ネットに落っこちる
-
-まず、バランス棒にとまっている鳥の数を型で表しましょう。
-
-//emlist{
-type Birds = int
-type Pole = Birds * Birds
-//}
-
-2-タプルの 第一要素が左側にとまっている鳥の数、第二要素が右側にとまっている鳥の数を表します。
-
-次に、鳥の数をとって、バランス棒の左右に鳥をとまらせる関数を作ります。
-
-//emlist{
-// Birds -> Pole -> Pole
-let landLeft n (left, right) =
-  if abs ((left + n) - right) < 4 then Some (left + n, right)
-  else None
-
-// Birds -> Pole -> Pole
-let landRight n (left, right) =
-  if abs (left - (right + n)) < 4 then Some (left, right + n)
-  else None
-//}
-
-鳥が飛び去る操作は、鳥の数に負数を渡すことで表現します。
-
-それでは、ピエールに綱渡りさせてみましょう。
-
-//emlist{
-Some (0, 0) >>= landRight 2 >>= landLeft 2 >>= landRight 2 // equal (Some (2, 4))
-//}
-
-もう一回渡ってもらいましょう。
-
-//emlist{
-Some (0, 0) >>= landLeft 1 >>= landRight 4 >>= landLeft (-1) // equal None
-//}
-
-鳥が右側に集中してしまったことで、ピエールが落ちてしまいました。
-落ちた状態で右側の鳥を減らしてみたらどうなるでしょう?
-
-//emlist{
-Some (0, 0) >>= landLeft 1 >>= landRight 4 >>= landLeft (-1) >>= landRight (-2) // equal None
-//}
-
-ピエールが落下してしまっていることが、後続の操作にも伝播していることがわかります。
-
-最後に、コンピュテーション式を使って綱渡りをシミュレーションしてみましょう。
-
-//emlist{
-// routine equal (Some (3, 2))
-let routine =
-  option {
-    let! start = Some (0, 0)
-    let! first = landLeft 2 start
-    let! second = landRight 2 first
-    return! landLeft 1 second
+let leftIdentityLaw f a =
+  let left = option {
+    let! fa = point a
+    return! f fa
   }
+  left = f a
+
+let associativeLaw f g fa =
+  let left = option {
+    let! a = fa
+    let! b = f a
+    return! g b
+  }
+  left = Option.bind (fun a -> Option.bind g (f a)) fa
 //}
 
