@@ -11,6 +11,3 @@ CHAPS:
   - implicit_conversion.re
   - analysis_comp_expr.re
   - future_work.re
-
-POSTDEF:
-
